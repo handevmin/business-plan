@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="ko" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <title>AI 기반 맞춤형 스마트 학습 솔루션</title>
+    <meta name="description" content="개인별 학습 플래너, 실시간 학습 모니터링, AI 질의응답 튜터를 위한 종합 학습 솔루션">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      /* 기본 리셋 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        line-height: 1.7;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+      
+      /* 컨테이너 스타일 - 스크롤 방식으로 수정 */
+      #content-container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      
+      section {
+        width: 100%;
+        padding: 60px;
+        margin-bottom: 30px;
+        background-color: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 12px;
+      }
+      
+      .bg-primary {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        color: white;
+      }
+      
+      .bg-light {
+        background-color: #f8f9fa;
+      }
+      
+      .wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .aligncenter {
+        text-align: center;
+      }
+      
+      /* 타이포그래피 */
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: inherit;
+      }
+      
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 15px;
+      }
+      
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+        border-radius: 2px;
+      }
+      
+      .aligncenter h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        font-weight: 500;
+        color: #2c3e50;
+      }
+      
+      h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        margin-top: 1.5rem;
+        font-weight: 500;
+        color: #3a7bd5;
+      }
+      
+      .text-intro {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+      
+      /* 그리드 */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin: 40px 0;
+      }
+      
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin: 40px 0;
+      }
+      
+      @media (max-width: 992px) {
+        .grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      /* 컴포넌트 */
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 35px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+      
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      }
+      
+      ul.features {
+        list-style: none;
+        margin: 30px 0;
+      }
+      
+      ul.features li {
+        margin-bottom: 20px;
+        padding-left: 35px;
+        position: relative;
+      }
+      
+      ul.features li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #3a7bd5;
+        font-weight: bold;
+      }
+      
+      .timeline {
+        margin: 40px 0;
+      }
+      
+      .timeline-item {
+        margin-bottom: 30px;
+        padding-left: 30px;
+        position: relative;
+        border-left: 3px solid #3a7bd5;
+        padding-bottom: 20px;
+      }
+      
+      .timeline-item h3 {
+        color: #3a7bd5;
+      }
+      
+      /* 테이블 스타일 */
+      .table-container {
+        margin: 30px 0;
+        overflow-x: auto;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      th {
+        background-color: #3a7bd5;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 500;
+      }
+      
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      tr:last-child td {
+        border-bottom: none;
+      }
+      
+      tr:hover {
+        background-color: #f8f9fa;
+      }
+      
+      .problem-list {
+        padding-left: 20px;
+        margin: 20px 0;
+      }
+      
+      .problem-list li {
+        margin-bottom: 10px;
+      }
+      
+      /* 이미지 스타일 */
+      .image-container {
+        margin: 40px 0;
+        text-align: center;
+      }
+      
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .image-caption {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 15px;
+        text-align: center;
+      }
+      
+      /* SVG 다이어그램 스타일 */
+      .diagram-svg {
+        width: 100%;
+        max-width: 900px;
+        margin: 40px auto;
+        display: block;
+      }
+      
+      /* 상단으로 이동 버튼 */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        border: none;
+        font-size: 20px;
+        color: #3a7bd5;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+      
+      .back-to-top:hover {
+        background: #3a7bd5;
+        color: white;
+        transform: translateY(-3px);
+      }
+      
+      /* 프로세스 흐름도 */
+      .process-flow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+      
+      .process-step {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+      
+      .process-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #f0f7ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-size: 30px;
+        color: #3a7bd5;
+        border: 2px solid #3a7bd5;
+      }
+      
+      .process-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+      
+      .process-desc {
+        font-size: 0.9rem;
+        color: #666;
+      }
+      
+      .process-arrow {
+        font-size: 24px;
+        color: #3a7bd5;
+        margin: 0 10px;
+      }
+      
+      @media (max-width: 768px) {
+        .process-flow {
+          flex-direction: column;
+        }
+        
+        .process-step {
+          width: 100%;
+          margin-bottom: 30px;
+        }
+        
+        .process-arrow {
+          transform: rotate(90deg);
+          margin: 15px 0;
+        }
+      }
+      
+      /* 도식화 스타일 */
+      .arch-diagram {
+        width: 100%;
+        margin: 40px 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+      
+      .arch-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        position: relative;
+      }
+      
+      .arch-box {
+        padding: 15px 25px;
+        border-radius: 8px;
+        text-align: center;
+        margin: 0 10px;
+        min-width: 180px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        z-index: 2;
+      }
+      
+      .arch-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      
+      .arch-desc {
+        font-size: 0.8rem;
+        color: #666;
+      }
+      
+      .arch-arrow {
+        width: 30px;
+        text-align: center;
+        font-size: 20px;
+        color: #3a7bd5;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .arch-box.input {
+        background-color: #e3f2fd;
+        border: 2px solid #2196f3;
+      }
+      
+      .arch-box.process {
+        background-color: #e8f5e9;
+        border: 2px solid #4caf50;
+      }
+      
+      .arch-box.output {
+        background-color: #fff8e1;
+        border: 2px solid #ffb300;
+      }
+      
+      .arch-box.storage {
+        background-color: #f3e5f5;
+        border: 2px solid #9c27b0;
+      }
+      
+      .arch-vertical-arrow {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #3a7bd5;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content-container">
+      <!-- 표지 섹션 -->
+      <section class="bg-primary aligncenter">
+        <div class="wrap">
+          <h1><strong>AI 기반 맞춤형<br>스마트 학습 솔루션</strong></h1>
+          <p class="text-intro">개인별 학습 플래너, 실시간 학습 모니터링과<br>AI 질의응답 튜터를 통합한 종합 학습 서비스</p>
+        </div>
+      </section>
+      
+      <!-- 1. 맞춤형 스마트 학습 공간 -->
+      <section>
+        <div class="wrap">
+          <h2><strong>1. 맞춤형 스마트 학습 공간</strong></h2>
+          <p class="text-intro">맞춤형 학습 보조 솔루션 고도화</p>
+          
+          <h3>개발 맞춤형 플래너 제작</h3>
+          <div class="grid">
+            <div class="card">
+              <h4>개인별 학습 플래너 자동 생성</h4>
+              <ul class="features">
+                <li>학습자의 목표, 과목별 수준, 시험 일정 등을 반영한 맞춤형 학습 계획 제공</li>
+                <li>학습 일정, 과목별 배분 시간, 심화/기본 학습 비율 자동 설계</li>
+                <li>개인별 학습 패턴과 목표 달성률에 따른 플래너 최적화</li>
+                <li>시험 일정에 맞춘 역산 학습 계획 자동 조정</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>학습 로그 연동 및 성과 분석</h4>
+              <ul class="features">
+                <li>온라인 학습 플랫폼, 문제 풀이 결과와 자동 연동</li>
+                <li>주 단위, 월 단위 학습 성과 분석 리포트 제공</li>
+                <li>취약 영역 자동 감지 및 집중 학습 시간 할당</li>
+                <li>목표 달성률에 따른 플래너 자동 재설계</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 플래너 예시 이미지 -->
+          
+          <h3>플래너를 인공지능 스피커와 연동</h3>
+          <div class="card">
+            <ul class="features">
+              <li>개인 학습 플래너 주요 알림(과목별 시작 시간, 휴식 타이밍 등)을 음성으로 안내</li>
+              <li>학습 진행 상황(공부 시작/종료 시점, 집중 시간 등)을 음성 명령으로 실시간 기록</li>
+              <li>앱과 자동 연동되어 실시간 학습 활동 추적 및 기록</li>
+              <li>음성 인식을 통한 간편한 일정 변경 및 조정 기능</li>
+            </ul>
+          </div>
+          
+          <h3>플래너 연계 '타임 알림' 및 음성 가이드</h3>
+          
+          <!-- 타임 알림 프로세스 흐름도 -->
+          <div class="process-flow">
+            <div class="process-step">
+              <div class="process-icon">1</div>
+              <div class="process-title">학습 시작</div>
+              <div class="process-desc">음성 안내로 시작 과목 알림</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">2</div>
+              <div class="process-title">진행 모니터링</div>
+              <div class="process-desc">실시간 집중도 체크</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">3</div>
+              <div class="process-title">휴식 알림</div>
+              <div class="process-desc">최적 휴식 시간 제안</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">4</div>
+              <div class="process-title">학습 전환</div>
+              <div class="process-desc">다음 과목 안내</div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>"지금부터 국어 독해 문제풀이를 시작하세요."처럼 학습 시간대별 안내 기능 제공</li>
+              <li>특정 학습 목표(50분 집중 후 10분 휴식)에 도달하면 자동 알림</li>
+              <li>휴식 시간에 스트레칭, 물 마시기 등 교정 활동 제안</li>
+              <li>학습 흐름에 맞춘 동기부여 메시지 제공</li>
+            </ul>
+          </div>
+          
+          <h3>실력 부족 항목 분석 및 플래너 보완</h3>
+          
+          <!-- 실력 분석 예시 이미지 -->
+          <div class="image-container">
+            <svg class="diagram-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 배경 그리드 -->
+              <g stroke="#eee" stroke-width="1">
+                <line x1="100" y1="50" x2="100" y2="350"></line>
+                <line x1="100" y1="350" x2="700" y2="350"></line>
+                <line x1="100" y1="300" x2="700" y2="300"></line>
+                <line x1="100" y1="250" x2="700" y2="250"></line>
+                <line x1="100" y1="200" x2="700" y2="200"></line>
+                <line x1="100" y1="150" x2="700" y2="150"></line>
+                <line x1="100" y1="100" x2="700" y2="100"></line>
+                <line x1="100" y1="50" x2="700" y2="50"></line>
+                <line x1="200" y1="50" x2="200" y2="350"></line>
+                <line x1="300" y1="50" x2="300" y2="350"></line>
+                <line x1="400" y1="50" x2="400" y2="350"></line>
+                <line x1="500" y1="50" x2="500" y2="350"></line>
+                <line x1="600" y1="50" x2="600" y2="350"></line>
+                <line x1="700" y1="50" x2="700" y2="350"></line>
+              </g>
+              
+              <!-- 축 레이블 -->
+              <g text-anchor="middle" font-size="14" fill="#666">
+                <text x="200" y="380">수학</text>
+                <text x="300" y="380">국어</text>
+                <text x="400" y="380">영어</text>
+                <text x="500" y="380">과학</text>
+                <text x="600" y="380">사회</text>
+                <text x="700" y="380">한국사</text>
+                <text x="400" y="410" font-weight="bold">과목</text>
+                
+                <text x="60" y="350" text-anchor="end">0%</text>
+                <text x="60" y="300" text-anchor="end">20%</text>
+                <text x="60" y="250" text-anchor="end">40%</text>
+                <text x="60" y="200" text-anchor="end">60%</text>
+                <text x="60" y="150" text-anchor="end">80%</text>
+                <text x="60" y="100" text-anchor="end">90%</text>
+                <text x="60" y="50" text-anchor="end">100%</text>
+                <text x="50" y="200" transform="rotate(-90, 50, 200)" font-weight="bold">정답률</text>
+              </g>
+              
+              <!-- 데이터 막대 - 과목별 성취도 -->
+              <rect x="150" y="180" width="100" height="170" fill="#3a7bd5" opacity="0.7"></rect>
+              <rect x="250" y="100" width="100" height="250" fill="#3a7bd5" opacity="0.7"></rect>
+              <rect x="350" y="230" width="100" height="120" fill="#3a7bd5" opacity="0.7"></rect>
+              <rect x="450" y="150" width="100" height="200" fill="#3a7bd5" opacity="0.7"></rect>
+              <rect x="550" y="200" width="100" height="150" fill="#3a7bd5" opacity="0.7"></rect>
+              <rect x="650" y="120" width="100" height="230" fill="#3a7bd5" opacity="0.7"></rect>
+              
+              <!-- 목표 라인 -->
+              <line x1="100" y1="120" x2="700" y2="120" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"></line>
+              <text x="120" y="115" font-size="14" fill="#ff6b6b">목표 달성선 (85%)</text>
+              
+              <!-- 그래프 제목 -->
+              <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">과목별 성취도 분석</text>
+            </svg>
+            <div class="image-caption">그림 2: AI 기반 과목별 성취도 분석 및 부족 항목 시각화</div>
+          </div>
+          
+          <div class="grid">
+            <div class="card">
+              <h4>데이터 기반 분석</h4>
+              <ul class="features">
+                <li>정답률, 오답 패턴 등을 분석해 우선 보충 과목 또는 문항 유형 식별</li>
+                <li>반복적인 오답 패턴 발견 및 집중 학습 영역 추천</li>
+                <li>학습자의 취약점을 자동 분류하여 유형별 대응책 제시</li>
+                <li>학습 시간 대비 효율성 분석으로 학습법 개선 방향 제안</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>플래너 자동 조정</h4>
+              <ul class="features">
+                <li>다음 주차/월간 플래너에 취약 항목 자동 반영</li>
+                <li>학습 취약 분야에 추가 시간 배정 및 보충 자료 추천</li>
+                <li>개인화된 복습 주기 설정으로 망각 곡선 최적화</li>
+                <li>주도적 학습 관리가 가능하도록 상세 가이드 제공</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 2. AI 생활 관리 선생님 -->
+      <section class="bg-light">
+        <div class="wrap">
+          <h2><strong>2. AI 생활 관리 선생님</strong></h2>
+          <p class="text-intro">실시간 동작 감지 모니터링 고도화</p>
+          
+          <h3>학습 공간에 AI 기반 동작 감지 솔루션 적용</h3>
+          
+          <!-- 센서 구성도 이미지 -->
+          <div class="image-container">
+            <svg class="diagram-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 책상 -->
+              <rect x="200" y="250" width="400" height="20" fill="#a67c52"></rect>
+              <rect x="220" y="270" width="30" height="80" fill="#8d6e63"></rect>
+              <rect x="550" y="270" width="30" height="80" fill="#8d6e63"></rect>
+              
+              <!-- 의자 -->
+              <rect x="350" y="280" width="100" height="10" fill="#5d4037"></rect>
+              <rect x="360" y="290" width="80" height="60" fill="#795548"></rect>
+              <rect x="360" y="350" width="10" height="30" fill="#5d4037"></rect>
+              <rect x="430" y="350" width="10" height="30" fill="#5d4037"></rect>
+              
+              <!-- 카메라 센서 -->
+              <rect x="380" y="100" width="40" height="30" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"></rect>
+              <circle cx="400" cy="115" r="10" fill="#2196f3"></circle>
+              <text x="400" y="80" text-anchor="middle" font-size="14" fill="#333">카메라 센서</text>
+              
+              <!-- 압력 센서 -->
+              <rect x="350" y="280" width="100" height="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"></rect>
+              
+              <!-- 시선 추적 센서 -->
+              <rect x="380" y="200" width="40" height="10" rx="5" fill="#fff8e1" stroke="#ffb300" stroke-width="2"></rect>
+              <text x="400" y="180" text-anchor="middle" font-size="14" fill="#333">시선 추적 센서</text>
+              
+              <!-- 스마트 스피커 -->
+              <circle cx="600" cy="225" r="20" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"></circle>
+              <text x="600" y="200" text-anchor="middle" font-size="14" fill="#333">스마트 스피커</text>
+              
+              <!-- 학생 실루엣 -->
+              <circle cx="400" cy="220" r="30" fill="#90caf9"></circle> <!-- 머리 -->
+              <rect x="375" y="250" width="50" height="70" rx="10" fill="#90caf9"></rect> <!-- 몸통 -->
+              
+              <!-- 연결선 -->
+              <line x1="400" y1="130" x2="400" y2="190" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5"></line>
+              <line x1="420" y1="200" x2="580" y2="220" stroke="#ffb300" stroke-width="2" stroke-dasharray="5,5"></line>
+              <line x1="450" y1="280" x2="580" y2="230" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,5"></line>
+              
+              <!-- 타이틀 -->
+              <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">AI 기반 학습 공간 센서 구성도</text>
+            </svg>
+            <div class="image-caption">그림 3: 학습 공간 내 AI 센서 배치 및 구성도</div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>카메라 센서: 얼굴 표정, 시선, 자세 등을 감지하여 집중도 추적</li>
+              <li>압력 센서: 책상 의자에 설치하여 착석 여부 및 자세 변화 감지</li>
+              <li>시선 추적 센서: 학습 자료에 대한 집중도와 읽기 패턴 분석</li>
+              <li>학습자가 자리를 비우거나 부적절한 자세 유지 시 실시간 경고 발생</li>
+              <li>스마트 스피커를 통한 음성 피드백 및 알림 제공</li>
+            </ul>
+          </div>
+          
+          <h3>카메라를 통한 학습자 집중도 추적</h3>
+          
+          <!-- 집중도 모니터링 그래프 -->
+          <div class="image-container">
+            <svg class="diagram-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- 배경 그리드 -->
+              <g stroke="#eee" stroke-width="1">
+                <line x1="100" y1="50" x2="100" y2="250"></line>
+                <line x1="100" y1="250" x2="700" y2="250"></line>
+                <line x1="100" y1="200" x2="700" y2="200"></line>
+                <line x1="100" y1="150" x2="700" y2="150"></line>
+                <line x1="100" y1="100" x2="700" y2="100"></line>
+                <line x1="100" y1="50" x2="700" y2="50"></line>
+              </g>
+              
+              <!-- 축 레이블 -->
+              <g text-anchor="middle" font-size="13" fill="#666">
+                <text x="100" y="280" text-anchor="middle">09:00</text>
+                <text x="200" y="280" text-anchor="middle">09:20</text>
+                <text x="300" y="280" text-anchor="middle">09:40</text>
+                <text x="400" y="280" text-anchor="middle">10:00</text>
+                <text x="500" y="280" text-anchor="middle">10:20</text>
+                <text x="600" y="280" text-anchor="middle">10:40</text>
+                <text x="700" y="280" text-anchor="middle">11:00</text>
+                <text x="400" y="350" font-weight="bold">학습 시간</text>
+                
+                <text x="60" y="250" text-anchor="end">0%</text>
+                <text x="60" y="200" text-anchor="end">25%</text>
+                <text x="60" y="150" text-anchor="end">50%</text>
+                <text x="60" y="100" text-anchor="end">75%</text>
+                <text x="60" y="50" text-anchor="end">100%</text>
+                <text x="50" y="120" transform="rotate(-90, 50, 150)" font-weight="bold">집중도 수준</text>
+              </g>
+              
+              <!-- 집중도 라인 -->
+              <polyline points="100,100 150,110 200,90 250,120 300,180 350,220 400,150 450,80 500,90 550,100 600,130 650,110 700,90" fill="none" stroke="#3a7bd5" stroke-width="3"></polyline>
+              
+              <!-- 이벤트 마커 -->
+              <circle cx="300" cy="180" r="8" fill="#ff6b6b"></circle>
+              <text x="300" y="200" text-anchor="middle" font-size="12" fill="#ff6b6b">집중 저하</text>
+              
+              <circle cx="350" cy="220" r="8" fill="#ff6b6b"></circle>
+              <text x="350" y="240" text-anchor="middle" font-size="12" fill="#ff6b6b">휴식 권고</text>
+              
+              <circle cx="400" cy="150" r="8" fill="#4caf50"></circle>
+              <text x="400" y="170" text-anchor="middle" font-size="12" fill="#4caf50">휴식 후 회복</text>
+              
+              <!-- 그래프 제목 -->
+              <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">실시간 학습 집중도 모니터링</text>
+            </svg>
+            <div class="image-caption">그림 4: AI 기반 학습자 집중도 추적 및 휴식 개입 효과</div>
+          </div>
+          
+          <div class="grid">
+            <div class="card">
+              <h4>집중도 지수 산출</h4>
+              <ul class="features">
+                <li>얼굴, 시선, 자세 인식으로 집중도 지수 산출</li>
+                <li>시선 이탈 빈도, 스마트폰 사용, 졸음 여부 감지</li>
+                <li>장시간 집중 후 피로도 증가 패턴 감지</li>
+                <li>학습자별 평균 집중 지속 시간 분석</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>자동 개입 시스템</h4>
+              <ul class="features">
+                <li>집중도가 급격히 낮아지면 휴식 안내</li>
+                <li>AI 스피커 또는 스마트 디스플레이로 알림 제공</li>
+                <li>최적 휴식 시간 및 활동 추천</li>
+                <li>개인별 학습-휴식 패턴 최적화</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3>즉각적 피드백을 통한 학습 태도 개선</h3>
+          
+          <!-- 피드백 프로세스 흐름도 -->
+          <div class="process-flow">
+            <div class="process-step">
+              <div class="process-icon">1</div>
+              <div class="process-title">상태 감지</div>
+              <div class="process-desc">자세, 집중도 실시간 모니터링</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">2</div>
+              <div class="process-title">분석</div>
+              <div class="process-desc">문제 상황 식별 및 개입 결정</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">3</div>
+              <div class="process-title">피드백</div>
+              <div class="process-desc">음성 또는 시각 알림 제공</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">4</div>
+              <div class="process-title">모니터링</div>
+              <div class="process-desc">개선 여부 확인 및 재조정</div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>실시간 음성·시각 알림으로 "자세를 바르게 하세요." "5분간 휴식을 취하세요." 등 즉각적 피드백</li>
+              <li>장시간 집중 후에는 눈 건강을 위한 20-20-20 규칙(20분마다 20초간 20피트 거리 응시) 안내</li>
+              <li>학습자의 반응(휴식 후 집중도 개선 여부)을 다시 센서로 확인</li>
+              <li>AI 모델이 피드백 효과를 학습하여 개인화된 개입 전략 발전</li>
+            </ul>
+          </div>
+          
+          <h3>집중도 기록 및 차후 플래너 반영</h3>
+          
+          <!-- 집중도 리포트 예시 이미지 -->
+          <div class="image-container">
+          </div>
+          
+          <div class="grid">
+            <div class="card">
+              <h4>데이터 축적 및 분석</h4>
+              <ul class="features">
+                <li>일·주간 단위로 집중도 데이터 축적</li>
+                <li>개인별 학습 리포트 자동 생성</li>
+                <li>시간대별, 과목별, 환경별 집중도 패턴 분석</li>
+                <li>학습 성과와 집중도 상관관계 도출</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>맞춤형 플래너 연동</h4>
+              <ul class="features">
+                <li>개인별 '최적 학습 시간대' 자동 반영</li>
+                <li>'적절한 휴식 주기' 데이터 기반 최적화</li>
+                <li>집중도가 높은 과목을 어려운 시간대에 배치</li>
+                <li>학습자의 생체리듬에 맞춘 일정 조정</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 3. AI 질의응답 튜터 -->
+      <section>
+        <div class="wrap">
+          <h2><strong>3. AI 질의응답 튜터</strong></h2>
+          <p class="text-intro">AI 기반 문제 추출 솔루션 고도화</p>
+          
+          <h3>자체 개발 솔루션을 통한 기출문제 데이터베이스 구축</h3>
+          
+          <!-- 문제 DB 아키텍처 -->
+          <div class="arch-diagram">
+            <div class="arch-row">
+              <div class="arch-box input">
+                <div class="arch-title">데이터 소스</div>
+                <div class="arch-desc">기출문제, 교재, 학습자료</div>
+              </div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box process">
+                <div class="arch-title">AI 처리</div>
+                <div class="arch-desc">문제 구조화 및 메타데이터 추출</div>
+              </div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box output">
+                <div class="arch-title">문제 DB</div>
+                <div class="arch-desc">구조화된 문제 저장소</div>
+              </div>
+            </div>
+            
+            <div class="arch-vertical-arrow">↓</div>
+            
+            <div class="arch-row">
+              <div class="arch-box storage" style="flex: 1;">
+                <div class="arch-title">메타데이터</div>
+                <div class="arch-desc">문제 유형<br>난이도<br>관련 개념<br>출제 빈도</div>
+              </div>
+              <div class="arch-box storage" style="flex: 1;">
+                <div class="arch-title">학습자 데이터</div>
+                <div class="arch-desc">풀이 이력<br>오답 패턴<br>학습 진도<br>취약 영역</div>
+              </div>
+              <div class="arch-box storage" style="flex: 1;">
+                <div class="arch-title">추천 엔진</div>
+                <div class="arch-desc">개인화된 문제 추천<br>취약점 보완 문제<br>실력 향상 경로</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>공무원·수능·자격증 시험 등 다양한 기출문제를 AI가 구조화하여 DB화</li>
+              <li>문제 유형(객관식·주관식·서술형), 난이도, 빈출 개념 등 메타데이터 포함</li>
+              <li>유사 문제 자동 그룹화 및 연관 학습 자료 매핑</li>
+              <li>정교한 문제 추천 알고리즘으로 개인별 최적 학습 경로 제시</li>
+            </ul>
+          </div>
+          
+          <h3>학습자의 질의에 대한 실시간 응답</h3>
+          
+          <!-- 질의응답 예시 이미지 -->
+          
+          <div class="grid">
+            <div class="card">
+              <h4>직관적 질의응답</h4>
+              <ul class="features">
+                <li>음성/텍스트로 질문하면 NLP 기반으로 즉시 해설 제공</li>
+                <li>풀이 과정 단계별 설명 및 개념 이해 지원</li>
+                <li>연관 개념 및 배경 지식 자동 제공</li>
+                <li>질문 의도에 맞는 정확한 답변 생성</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>맞춤형 학습 경로</h4>
+              <ul class="features">
+                <li>틀린 문제와 반복 실수 유형에 대한 추가 학습 제안</li>
+                <li>"이 개념 관련 기초 문제도 풀어보세요." 등 추가 학습 경로 제공</li>
+                <li>학습자 수준에 맞는 단계적 난이도 조정</li>
+                <li>취약점 극복을 위한 개인별 문제 세트 생성</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3>학습자의 질의 사항, 오답 패턴 등 빅데이터 추적</h3>
+          
+          <!-- 데이터 분석 SVG -->
+          <div class="image-container">
+            <svg class="diagram-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- 중앙 원 -->
+              <circle cx="400" cy="150" r="80" fill="#f0f7ff" stroke="#3a7bd5" stroke-width="3"></circle>
+              <text x="400" y="155" text-anchor="middle" font-size="16" font-weight="bold">AI 튜터</text>
+              
+              <!-- 연결선 및 외부 노드 -->
+              <!-- 질문 패턴 -->
+              <line x1="320" y1="150" x2="220" y2="150" stroke="#3a7bd5" stroke-width="2"></line>
+              <circle cx="170" cy="150" r="50" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"></circle>
+              <text x="170" y="145" text-anchor="middle" font-size="14">질문</text>
+              <text x="170" y="165" text-anchor="middle" font-size="14">패턴</text>
+              
+              <!-- 오답 분석 -->
+              <line x1="459" y1="91" x2="520" y2="50" stroke="#3a7bd5" stroke-width="2"></line>
+              <circle cx="570" cy="50" r="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"></circle>
+              <text x="570" y="45" text-anchor="middle" font-size="14">오답</text>
+              <text x="570" y="65" text-anchor="middle" font-size="14">분석</text>
+              
+              <!-- 취약 개념 -->
+              <line x1="459" y1="209" x2="520" y2="250" stroke="#3a7bd5" stroke-width="2"></line>
+              <circle cx="570" cy="250" r="50" fill="#fff8e1" stroke="#ffb300" stroke-width="2"></circle>
+              <text x="570" y="245" text-anchor="middle" font-size="14">취약</text>
+              <text x="570" y="265" text-anchor="middle" font-size="14">개념</text>
+              
+              <!-- 학습 속도 -->
+              <!-- <line x1="400" y1="230" x2="400" y2="300" stroke="#3a7bd5" stroke-width="2"></line> -->
+              <circle cx="400" cy="350" r="50" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" opacity="0"></circle>
+              
+              <!-- 타이틀 -->
+              <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">AI 튜터의 학습자 데이터 분석</text>
+            </svg>
+            <div class="image-caption">그림 7: AI 튜터의 학습자 데이터 분석 개념도</div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>자주 묻는 질문, 특정 개념에서의 오답률 등을 AI가 스스로 학습</li>
+              <li>튜터봇 정확도 지속적 향상 및 답변 품질 개선</li>
+              <li>이용자의 실력 향상도를 측정해 맞춤형 보충강의 자동 연결</li>
+              <li>영상 강의, PDF 자료 등 다양한 형태의 학습 자료 제안</li>
+              <li>개인별 학습 진도와 성취도에 맞춘 콘텐츠 큐레이션</li>
+            </ul>
+          </div>
+          
+          <h3>질의응답 데이터의 지속적 AI 학습</h3>
+          
+          <!-- 데이터 학습 흐름도 -->
+          <div class="process-flow">
+            <div class="process-step">
+              <div class="process-icon">1</div>
+              <div class="process-title">데이터 수집</div>
+              <div class="process-desc">질의응답 기록 축적</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">2</div>
+              <div class="process-title">AI 분석</div>
+              <div class="process-desc">패턴 식별 및 학습</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">3</div>
+              <div class="process-title">모델 개선</div>
+              <div class="process-desc">튜터 응답 정확도 향상</div>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+              <div class="process-icon">4</div>
+              <div class="process-title">전문가 검증</div>
+              <div class="process-desc">정기적 품질 확인</div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <ul class="features">
+              <li>튜터봇이 축적된 Q&A 데이터를 기반으로 자연스럽고 정교한 답변을 지속 학습</li>
+              <li>시스템 관리자(사람 강사)가 정기적으로 답변 품질을 확인</li>
+              <li>전문 해설 및 최신 교육 트렌드를 반영한 사례 추가</li>
+              <li>고급 질문에도 대응 가능한 정확한 해설 제공</li>
+              <li>학습자의 피드백을 통한 질의응답 시스템 지속적 개선</li>
+            </ul>
+          </div>
+          
+          <h3>기대 효과 및 활용 방안</h3>
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>대상</th>
+                <th>주요 효과</th>
+                <th>활용 방안</th>
+              </tr>
+              <tr>
+                <td>학생</td>
+                <td>개인화된 학습 경험, 효율적 시간 관리</td>
+                <td>자기주도학습 역량 강화, 취약점 집중 보완</td>
+              </tr>
+              <tr>
+                <td>학부모</td>
+                <td>자녀 학습 상황 실시간 모니터링</td>
+                <td>객관적 데이터 기반 학습 지도</td>
+              </tr>
+              <tr>
+                <td>교사</td>
+                <td>개별 학생 맞춤형 지도 자료 확보</td>
+                <td>AI 보조 교사로 활용, 학생별 학습 전략 수립</td>
+              </tr>
+              <tr>
+                <td>학원</td>
+                <td>차별화된 학습 관리 서비스 제공</td>
+                <td>맞춤형 프리미엄 학습 코칭 상품화</td>
+              </tr>
+              <tr>
+                <td>교육기관</td>
+                <td>학습 빅데이터 확보 및 분석</td>
+                <td>교육과정 최적화 및 교육 품질 향상</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 결론 -->
+      <section class="bg-primary aligncenter">
+        <div class="wrap">
+          <h2><strong>AI 기반 맞춤형 스마트 학습 솔루션</strong></h2>
+          <p class="text-intro">개인화된 학습 경험으로 학습 효율성과 성취도를 극대화합니다</p>
+          <p>맞춤형 학습 플래너, 실시간 학습 관리, AI 질의응답 튜터의 완벽한 통합</p>
+        </div>
+      </section>
+    </div>
+    
+    <!-- 상단으로 이동 버튼 -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+    
+    <script>
+      // 상단으로 이동 버튼 기능
+      document.addEventListener('DOMContentLoaded', function() {
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        // 스크롤 시 버튼 표시/숨김
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) { // 300px 이상 스크롤 시 버튼 표시
+            backToTopButton.style.display = 'flex';
+          } else {
+            backToTopButton.style.display = 'none';
+          }
+        });
+        
+        // 버튼 클릭 시 상단으로 스크롤
+        backToTopButton.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+        
+        // 초기 상태 설정
+        backToTopButton.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>
